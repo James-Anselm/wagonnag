@@ -1,6 +1,14 @@
 class CarsController < ApplicationController
   before_action :logged_in_user
 
+  def index
+    @user = current_user
+  end
+
+  def show
+    @car = Car.find(params[:id])
+  end
+
   def new
     @car = Car.new
   end
@@ -8,10 +16,16 @@ class CarsController < ApplicationController
   def create
     @car = current_user.cars.build(car_params)
     if(@car.save)
-      redirect_to root_url
+      redirect_to user_path(:id => current_user.id)
     else
       render 'new'
     end
+  end
+
+  def destroy
+    Car.find(params[:id]).destroy
+    flash[:success] = "Car deleted"
+    redirect_to user_path(:id => current_user.id)
   end
 
   private
