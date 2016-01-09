@@ -1,0 +1,10 @@
+<div class="maintenance-item">
+  <span class="name"><%= maintenance_item.name %></span>
+  <span class="description"><%= maintenance_item.description %></span>
+  <span class="interval"><%= maintenance_item.interval %></span>
+  <%= link_to "Show", car_maintenance_item_path(@car, maintenance_item) %>
+  <% if current_user.admin? || current_user?(user) %>
+      | <%= link_to "Delete", car_maintenance_item_path([@car, maintenance_item],
+                method: :delete, data: { confirm: "You sure?" }) %>
+  <% end %>
+</div>

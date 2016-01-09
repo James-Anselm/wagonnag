@@ -15,7 +15,7 @@
     <% if @user.cars.any? %>
         <h3>Cars (<%= @user.cars.count %>)</h3>
         <div class="cars">
-          <%= render @cars %>
+          <%= render @user.cars %>
         </div>
     <% end %>
   </div>

@@ -1,6 +1,6 @@
 class Car < ActiveRecord::Base
   belongs_to :user
-  has_many :maintenence_items, dependent: :destroy
+  has_many :maintenance_items, dependent: :destroy
   validates :make, presence: true
-  validates :model, presence: true
+  validates :modelrails , presence: true
 end

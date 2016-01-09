@@ -7,3 +7,12 @@
   <span class="make"><%= @car.nickname %></span>
   <span class="make"><%= @car.description %></span>
 </div>
+<%= link_to "Add a new maintenance item", new_car_maintenance_item_path(@car) %>
+<div class="col-md-8">
+  <% if @car.maintenance_items.any? %>
+      <h3>Maintenance Items -  (<%= @car.maintenance_items.count %>)</h3>
+      <div class="maintenance-items">
+        <%= render @car.maintenance_items %>
+      </div>
+  <% end %>
+</div>
