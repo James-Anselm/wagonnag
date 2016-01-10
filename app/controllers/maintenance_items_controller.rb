@@ -21,7 +21,7 @@ class MaintenanceItemsController < ApplicationController
   def destroy
     MaintenanceItem.find(params[:id]).destroy
     flash[:success] = "Maintenance item deleted"
-    redirect_to car_path(:id => current_user.id)
+    redirect_to car_path(:id => params[:car_id])
   end
 
   private
