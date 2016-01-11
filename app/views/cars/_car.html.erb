@@ -6,6 +6,7 @@
   <span class="make"><%= car.description %></span>
   <%= link_to "Show", car %>
   <% if current_user.admin? || current_user?(@user) %>
+      | <%= link_to "Edit", edit_car_path(car) %>
       | <%= link_to "Delete", car, method: :delete,
                     data: { confirm: "You sure?" } %>
   <% end %>
