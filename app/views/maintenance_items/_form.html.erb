@@ -1,0 +1,14 @@
+<%= form_for([@car, @maintenanceItem]) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :description %>
+    <%= f.text_field :description, class: 'form-control' %>
+
+    <%= f.label :interval %>
+    <%= f.number_field :interval, class: 'form-control' %>
+
+    <%= f.submit submitButtonText, class: 'btn btn-primary' %>
+<% end %>
