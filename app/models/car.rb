@@ -3,4 +3,5 @@ class Car < ActiveRecord::Base
   has_many :maintenance_items, dependent: :destroy
   validates :make, presence: true
   validates :model , presence: true
+  validates :odometer, presence: true
 end

@@ -4,6 +4,7 @@
   <span class="make"><%= car.model %></span>
   <span class="make"><%= car.nickname %></span>
   <span class="make"><%= car.description %></span>
+  <span class="odometer"><%= car.odometer %></span>
   <%= link_to "Show", car %>
   <% if current_user.admin? || current_user?(@user) %>
       | <%= link_to "Edit", edit_car_path(car) %>
