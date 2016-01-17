@@ -41,6 +41,6 @@ class MaintenanceItemsController < ApplicationController
 
   private
     def maintenance_items_params
-      params.require(:maintenance_item).permit(:name, :description, :interval)
+      params.require(:maintenance_item).permit(:name, :description, :interval, :last_maintained_odometer)
     end
 end

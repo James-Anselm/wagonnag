@@ -2,6 +2,7 @@
   <span class="name"><%= maintenance_item.name %></span>
   <span class="description"><%= maintenance_item.description %></span>
   <span class="interval"><%= maintenance_item.interval %></span>
+  <span class="last-maintained-odometer"><%= maintenance_item.last_maintained_odometer %></span>
   <%= link_to "Show", car_maintenance_item_path(@car, maintenance_item) %>
   <% if current_user.admin? || current_user?(@car.user) %>
     | <%= link_to "Edit", [:edit, @car, maintenance_item] %>
