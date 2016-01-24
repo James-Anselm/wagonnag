@@ -1,13 +1,13 @@
 <%= form_for(@car) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :make %>
+    <%= f.label :make, class: 'required' %>
     <%= f.text_field :make, class: 'form-control' %>
 
-    <%= f.label :model %>
+    <%= f.label :model, class: 'required' %>
     <%= f.text_field :model, class: 'form-control' %>
 
-    <%= f.label :year %>
+    <%= f.label :year, class: 'required' %>
     <%= f.number_field :year, class: 'form-control' %>
 
     <%= f.label :nickname %>
@@ -16,7 +16,7 @@
     <%= f.label :description %>
     <%= f.text_field :description, class: 'form-control' %>
 
-    <%= f.label :odometer %>
+    <%= f.label :odometer, class: 'required' %>
     <%= f.number_field :odometer, class: 'form-control' %>
 
     <%= f.submit submitButtonText, class: "btn btn-primary" %>

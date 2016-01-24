@@ -69,6 +69,11 @@ input {
   height: auto !important;
 }
 
+label.required:after {
+  content: " *";
+  color: red;
+}
+
 #error_explanation {
   color: red;
   ul {
