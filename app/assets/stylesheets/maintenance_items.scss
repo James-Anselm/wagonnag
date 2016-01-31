@@ -1,3 +1,18 @@
 // Place all the styles related to the MaintenanceItems controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.maintenance-item {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  min-width: 200px;
+  max-width: 40%;
+  box-sizing: border-box;
+}
+
+.maintenance-item > .name {
+  font-size: 1.25em;
+}

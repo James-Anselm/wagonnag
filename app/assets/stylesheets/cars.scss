@@ -1,3 +1,22 @@
 // Place all the styles related to the Cars controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.car {
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  min-width: 200px;
+  max-width: 40%;
+  box-sizing: border-box;
+}
+
+.car > .name {
+  font-size: 1.25em;
+}
+
+.odometer {
+  display: block;
+}

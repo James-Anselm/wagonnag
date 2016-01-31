@@ -1,11 +1,9 @@
 <div class="maintenance-item">
   <span class="name"><%= maintenance_item.name %></span>
-  <span class="description"><%= maintenance_item.description %></span>
-  <span class="interval"><%= maintenance_item.interval %></span>
-  <span class="last-maintained-odometer"><%= maintenance_item.last_maintained_odometer %></span>
-  <%= link_to "Show", car_maintenance_item_path(@car, maintenance_item) %>
   <% if current_user.admin? || current_user?(@car.user) %>
-    | <%= link_to "Edit", [:edit, @car, maintenance_item] %>
-    | <%= link_to "Delete", [@car, maintenance_item], method: :delete, data: { confirm: "You sure?" } %>
+      <%= link_to "Edit", [:edit, @car, maintenance_item] %>
+      | <%= link_to "Delete", [@car, maintenance_item], method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
+  <div class="interval">Service every <%= maintenance_item.interval %></div>
+  <div class="last-maintained-odometer">Last serviced at <%= maintenance_item.last_maintained_odometer %></div>
 </div>

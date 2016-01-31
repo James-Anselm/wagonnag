@@ -1,14 +1,11 @@
 <div class="car">
-  <span class="make"><%= car.year %></span>
-  <span class="make"><%= car.make %></span>
-  <span class="make"><%= car.model %></span>
-  <span class="make"><%= car.nickname %></span>
-  <span class="make"><%= car.description %></span>
-  <span class="odometer"><%= car.odometer %></span>
-  <%= link_to "Show", car %>
+  <%= link_to car, class: "name" do %>
+      <%= car.year %> <%= car.make %> <%= car.model %>
+  <% end %>
   <% if current_user.admin? || current_user?(@user) %>
       | <%= link_to "Edit", edit_car_path(car) %>
       | <%= link_to "Delete", car, method: :delete,
                     data: { confirm: "You sure?" } %>
   <% end %>
+  <div class="odometer">Current odometer: <%= car.odometer %></div>
 </div>
