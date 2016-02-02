@@ -2,7 +2,7 @@
 <h3>Car</h3>
 <div class="car">
   <span class="name"><%= @car.year %> <%= @car.make %> <%= @car.model %></span>
-  <% if current_user.admin? || current_user?(@user) %>
+  <% if current_user.admin? || current_user?(@car.user) %>
       | <%= link_to "Edit", edit_car_path(@car) %>
       | <%= link_to "Delete", @car, method: :delete,
                     data: { confirm: "You sure?" } %>
