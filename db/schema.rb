@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117145534) do
+ActiveRecord::Schema.define(version: 20160131205942) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "make"
@@ -32,9 +32,10 @@ ActiveRecord::Schema.define(version: 20160117145534) do
     t.integer  "car_id"
     t.string   "description"
     t.integer  "interval"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "last_maintained_odometer"
+    t.boolean  "due_for_checkup",          default: false
   end
 
   add_index "maintenance_items", ["car_id"], name: "index_maintenance_items_on_car_id"

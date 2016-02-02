@@ -12,7 +12,7 @@ class MaintenanceItemsController < ApplicationController
     @car = Car.find(params[:car_id])
     @maintenanceItem = @car.maintenance_items.build(maintenance_items_params)
     if(@maintenanceItem.save)
-      redirect_to car_maintenance_item_path(@maintenanceItem.car, @maintenanceItem)
+      redirect_to car_path(@maintenanceItem.car)
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class MaintenanceItemsController < ApplicationController
     @maintenanceItem = MaintenanceItem.find(params[:id])
     if @maintenanceItem.update_attributes(maintenance_items_params)
       flash[:success] = "Maintenance item updated"
-      redirect_to car_maintenance_item_path(@maintenanceItem.car, @maintenanceItem)
+      redirect_to car_path(@maintenanceItem.car)
     else
       render 'edit'
     end
@@ -41,6 +41,6 @@ class MaintenanceItemsController < ApplicationController
 
   private
     def maintenance_items_params
-      params.require(:maintenance_item).permit(:name, :description, :interval, :last_maintained_odometer)
+      params.require(:maintenance_item).permit(:name, :description, :interval, :last_maintained_odometer, :due_for_checkup)
     end
 end

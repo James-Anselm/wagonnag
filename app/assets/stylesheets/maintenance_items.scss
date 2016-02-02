@@ -16,3 +16,12 @@
 .maintenance-item > .name {
   font-size: 1.25em;
 }
+
+.maintenance-item.due-for-checkup {
+  border-color: red;
+  border-width: 2px;
+}
+
+.maintenance-item.due-for-checkup .due-for-checkup-message {
+  color: red;
+}

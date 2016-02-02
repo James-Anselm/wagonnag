@@ -28,8 +28,23 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
+    old_car_odometer = @car.odometer
+    count = 0
     if @car.update_attributes(car_params)
-      flash[:success] = "Car updated"
+      if(old_car_odometer < @car.odometer)
+        @car.maintenance_items.each do |maintenance_item|
+            if(maintenance_item.interval &&
+              maintenance_item.last_maintained_odometer &&
+              @car.odometer > (maintenance_item.last_maintained_odometer + maintenance_item.interval))
+              if(!maintenance_item.due_for_checkup)
+                maintenance_item.update_due_for_checkup(true)
+              end
+              count = count + 1
+            end
+        end
+      end
+
+      flash[:success] = "Update succeeded. #{count} maintenance item(s) are due for a checkup."
       redirect_to @car
     else
       render 'edit'

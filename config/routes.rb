@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :cars do
     resources :maintenance_items
   end
+  resources :maintenance_items, only: [:update]
 end

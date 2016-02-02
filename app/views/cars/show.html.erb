@@ -1,7 +1,13 @@
 <%= provide(:title, @car.nickname) %>
 <h3>Car</h3>
 <div class="car">
-  <div class="name"><%= @car.year %> <%= @car.make %> <%= @car.model %></div>
+  <span class="name"><%= @car.year %> <%= @car.make %> <%= @car.model %></span>
+  <% if current_user.admin? || current_user?(@user) %>
+      | <%= link_to "Edit", edit_car_path(@car) %>
+      | <%= link_to "Delete", @car, method: :delete,
+                    data: { confirm: "You sure?" } %>
+  <% end %>
+
   <div class="odometer">Current odometer: <%= @car.odometer %></div>
   <div class="nickname">Nickname: <%= @car.nickname %></div>
   <span class="description">Description: <%= @car.description %></span>
