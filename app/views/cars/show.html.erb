@@ -8,9 +8,15 @@
                     data: { confirm: "You sure?" } %>
   <% end %>
 
+  <% if !@car.nickname.empty? %>
+    <div class="nickname">aka <%= @car.nickname %></div>
+  <% end %>
+
+  <% if !@car.description.empty? %>
+    <span class="description"><%= @car.description %></span>
+  <% end %>
+
   <div class="odometer">Current odometer: <%= @car.odometer %></div>
-  <div class="nickname">Nickname: <%= @car.nickname %></div>
-  <span class="description">Description: <%= @car.description %></span>
 </div><h3>Maintenance Items -  (<%= @car.maintenance_items.count %>)</h3>
   <div class="maintenance-items">
   <% if @car.maintenance_items.any? %>
