@@ -1,0 +1,8 @@
+//console.log("asdf javascript <%= @car.odometer %>");
+
+var carSelector = $("#car_id_<%=@car.id%>");
+carSelector.find(".odometer-value")
+    .html("<%= @car.odometer %>")
+    .addClass("updated");
+carSelector.removeClass("update-odometer");
+carSelector.find(".form-container").empty();

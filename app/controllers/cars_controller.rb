@@ -28,22 +28,8 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
-    old_car_odometer = @car.odometer
-    count = 0
     if @car.update_attributes(car_params)
-      if(old_car_odometer < @car.odometer)
-        @car.maintenance_items.each do |maintenance_item|
-            if(maintenance_item.interval &&
-              maintenance_item.last_maintained_odometer &&
-              @car.odometer > (maintenance_item.last_maintained_odometer + maintenance_item.interval))
-              if(!maintenance_item.due_for_checkup)
-                maintenance_item.update_due_for_checkup(true)
-              end
-              count = count + 1
-            end
-        end
-      end
-
+      count = update_maintenance_items()
       flash[:success] = "Update succeeded. #{count} maintenance item(s) are due for a checkup."
       redirect_to @car
     else
@@ -57,8 +43,44 @@ class CarsController < ApplicationController
     redirect_to user_path(:id => current_user.id)
   end
 
+  def get_update_odometer_form
+    @car = Car.find(params[:id])
+    if(@car && @car.user_id == current_user.id)
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def update_odometer
+    @car = Car.find(params[:car_id])
+    if(@car && @car.user_id == current_user.id && (Integer(params[:odometer]) rescue false))
+      if(@car.update_attributes(:odometer => params[:odometer]))
+        update_maintenance_items();
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def car_params
       params.require(:car).permit(:make, :model, :year, :nickname, :description, :odometer )
+    end
+
+    def update_maintenance_items
+      count = 0
+      @car.maintenance_items.each do |maintenance_item|
+        if(maintenance_item.interval &&
+            maintenance_item.last_maintained_odometer &&
+            @car.odometer > (maintenance_item.last_maintained_odometer + maintenance_item.interval))
+          if(!maintenance_item.due_for_checkup)
+            maintenance_item.update_due_for_checkup(true)
+          end
+          count = count + 1
+        end
+      end
+      return count
     end
 end

@@ -1,0 +1,5 @@
+<%= form_tag({controller: 'cars', action: 'update_odometer'}, { method: 'post', remote: true}) do %>
+    <%= hidden_field_tag(:car_id, @car.id) %>
+    <%= text_field_tag(:odometer, nil, placeholder: @car.odometer) %>
+    <%= submit_tag("Update Odometer") %>
+<% end %>

@@ -1,4 +1,4 @@
-<div class="car">
+<div class="car" id="car_id_<%=car.id%>">
   <%= link_to car, class: "name" do %>
       <%= car.year %> <%= car.make %> <%= car.model %>
   <% end %>
@@ -7,5 +7,9 @@
       | <%= link_to "Delete", car, method: :delete,
                     data: { confirm: "You sure?" } %>
   <% end %>
-  <div class="odometer">Current odometer: <%= car.odometer %></div>
+  <div class="odometer">
+    <span class="odometer-title">Current odometer: </span><span class="odometer-value"><%= car.odometer %></span>
+  </div>
+  <%= link_to("Update Odometer", {controller: 'cars', action: 'get_update_odometer_form', id: car.id}, remote: true, class: 'update-odometer-link') %>
+  <div class="form-container"></div>
 </div>

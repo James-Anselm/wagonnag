@@ -1,0 +1,3 @@
+$("#car_id_<%=@car.id%>")
+    .addClass("update-odometer")
+    .find(".form-container").append("<%=escape_javascript(render('update_odometer_form'))%>");

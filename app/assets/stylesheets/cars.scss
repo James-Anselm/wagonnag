@@ -24,3 +24,20 @@
 .description {
   font-style: italic;
 }
+
+.car .odometer-value.updated::after {
+  content: "(Updated)";
+  color: green;
+}
+
+.car.update-odometer .odometer {
+  display: none;
+}
+
+.car.update-odometer .odometer-value.updated::after {
+  content: "";
+}
+
+.car.update-odometer .update-odometer-link {
+  display: none;
+}
