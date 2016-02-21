@@ -10,6 +10,7 @@ class CarsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @car = Car.new
   end
 

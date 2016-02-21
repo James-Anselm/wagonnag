@@ -1,8 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if(logged_in?)
-      @user = current_user
-      render 'users/show'
+      redirect_to(user_path(@current_user.id))
     end
   end
 

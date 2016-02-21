@@ -1,4 +1,5 @@
 <%= provide(:title, @car.nickname) %>
+<%= link_to "Back to all cars", user_path(@car.user), class: "back-link" %>
 <h3>Car</h3>
 <div class="car">
   <span class="name"><%= @car.year %> <%= @car.make %> <%= @car.model %></span>
@@ -17,7 +18,7 @@
   <% end %>
 
   <div class="odometer">Current odometer: <%= @car.odometer %></div>
-</div><h3>Maintenance Items -  (<%= @car.maintenance_items.count %>)</h3>
+</div><h3>Maintenance Items (<%= @car.maintenance_items.count %>)</h3>
   <div class="maintenance-items">
   <% if @car.maintenance_items.any? %>
         <%= render @car.maintenance_items %>

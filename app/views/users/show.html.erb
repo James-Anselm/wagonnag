@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="cars">
+<div class="cars <%= 'full-width' if !@expired_maintenance_items.any? %>">
   <% if @user.cars.any? %>
       <h3>Cars (<%= @user.cars.count %>)</h3>
       <%= render @user.cars %>
@@ -8,3 +8,9 @@
     <%= link_to "Add a new car", new_car_path %>
   </div>
 </div>
+<% if @expired_maintenance_items.any? %>
+  <div class="maintenance-items expired">
+    <h3>Items due for checkup (<%= @expired_maintenance_items.count %>)</h3>
+    <%= render @expired_maintenance_items %>
+  </div>
+<% end %>
