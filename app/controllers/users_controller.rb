@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @expired_maintenance_items = MaintenanceItem.where("due_for_checkup = 't'").joins(:car => :user).where("users.id = 101")
+    @expired_maintenance_items = MaintenanceItem.where("due_for_checkup = 't'").joins(:car => :user).where("users.id = ?", @user.id)
   end
 
   def new
