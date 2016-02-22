@@ -1,12 +1,13 @@
 <div class="car" id="car_id_<%=car.id%>">
-  <%= link_to car, class: "name" do %>
-      <%= car.year %> <%= car.make %> <%= car.model %>
-  <% end %>
-  <% if current_user.admin? || current_user?(@user) %>
-      | <%= link_to "Edit", edit_car_path(car) %>
-      | <%= link_to "Delete", car, method: :delete,
-                    data: { confirm: "You sure?" } %>
-  <% end %>
+  <div class="clearfix">
+    <%= link_to car, class: "name" do %>
+        <%= car.year %> <%= car.make %> <%= car.model %>
+    <% end %>
+    <% if current_user.admin? || current_user?(@user) %>
+        <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_car_path(car) %>
+        <%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), car, method: :delete, data: { confirm: "You sure?" }  %>
+    <% end %>
+  </div>
   <div class="odometer">
     <span class="odometer-title">Current odometer: </span><span class="odometer-value"><%= car.odometer %></span>
   </div>

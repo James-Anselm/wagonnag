@@ -17,3 +17,16 @@
     display: block;
     margin-top: 10px;
 }
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.glyphicon.glyphicon-pencil,
+.glyphicon.glyphicon-trash,
+.glyphicon.glyphicon-plus{
+    float: right;
+    margin-right: 5px;
+}

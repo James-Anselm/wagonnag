@@ -5,15 +5,14 @@
 .maintenance-item {
   display: inline-block;
   vertical-align: top;
-  margin: 10px;
+  margin-bottom: 10px;
+  width: 100%;
   padding: 10px;
   border: 1px solid black;
-  min-width: 200px;
-  max-width: 40%;
   box-sizing: border-box;
 }
 
-.maintenance-item > .name {
+.maintenance-item .name {
   font-size: 1.25em;
 }
 

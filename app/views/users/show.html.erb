@@ -1,12 +1,9 @@
 <% provide(:title, @user.name) %>
 <div class="cars <%= 'full-width' if !@expired_maintenance_items.any? %>">
   <% if @user.cars.any? %>
-      <h3>Cars (<%= @user.cars.count %>)</h3>
+      <h3 class="clearfix">Cars (<%= @user.cars.count %>) <%= link_to raw("<span class='glyphicon glyphicon-plus'></span>"), new_car_path %></h3>
       <%= render @user.cars %>
   <% end %>
-  <div class="car">
-    <%= link_to "Add a new car", new_car_path %>
-  </div>
 </div>
 <% if @expired_maintenance_items.any? %>
   <div class="maintenance-items expired">

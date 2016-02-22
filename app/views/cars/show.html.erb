@@ -4,9 +4,8 @@
 <div class="car">
   <span class="name"><%= @car.year %> <%= @car.make %> <%= @car.model %></span>
   <% if current_user.admin? || current_user?(@car.user) %>
-      | <%= link_to "Edit", edit_car_path(@car) %>
-      | <%= link_to "Delete", @car, method: :delete,
-                    data: { confirm: "You sure?" } %>
+      <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_car_path(@car) %>
+      <%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), @car, method: :delete, data: { confirm: "You sure?" }  %>
   <% end %>
 
   <% if !@car.nickname.empty? %>
@@ -18,12 +17,9 @@
   <% end %>
 
   <div class="odometer">Current odometer: <%= @car.odometer %></div>
-</div><h3>Maintenance Items (<%= @car.maintenance_items.count %>)</h3>
+</div><h3>Maintenance Items (<%= @car.maintenance_items.count %>) <%= link_to raw("<span class='glyphicon glyphicon-plus'></span>"), new_car_maintenance_item_path(@car) %></h3>
   <div class="maintenance-items">
   <% if @car.maintenance_items.any? %>
         <%= render @car.maintenance_items %>
   <% end %>
-  <div class="maintenance-item">
-    <%= link_to "Add a new maintenance item", new_car_maintenance_item_path(@car) %>
-  </div>
 </div>
