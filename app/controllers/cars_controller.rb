@@ -1,4 +1,6 @@
 class CarsController < ApplicationController
+  include MaintenanceItemsHelper
+
   before_action :logged_in_user
 
   def index
@@ -47,6 +49,7 @@ class CarsController < ApplicationController
   def get_update_odometer_form
     @car = Car.find(params[:id])
     if(@car && @car.user_id == current_user.id)
+
       respond_to do |format|
         format.js
       end
@@ -57,7 +60,8 @@ class CarsController < ApplicationController
     @car = Car.find(params[:car_id])
     if(@car && @car.user_id == current_user.id && (Integer(params[:odometer]) rescue false))
       if(@car.update_attributes(:odometer => params[:odometer]))
-        update_maintenance_items();
+        update_maintenance_items()
+        @expired_maintenance_items = expired_maintenance_items(@car.user_id)
       end
     end
     respond_to do |format|

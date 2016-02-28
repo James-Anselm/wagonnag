@@ -1,8 +1,8 @@
-//console.log("asdf javascript <%= @car.odometer %>");
-
 var carSelector = $("#car_id_<%=@car.id%>");
-carSelector.find(".odometer-value")
-    .html("<%= @car.odometer %>")
-    .addClass("updated");
+carSelector.find(".odometer-value").html("<%= @car.odometer %>")
 carSelector.removeClass("update-odometer");
 carSelector.find(".form-container").empty();
+
+var maintenanceItemsSelector = $(".maintenance-items.expired");
+maintenanceItemsSelector.find(".list").html("<%= escape_javascript(render @expired_maintenance_items) %>");
+maintenanceItemsSelector.find(".count").html("<%= @expired_maintenance_items.count %>");

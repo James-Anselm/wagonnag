@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include MaintenanceItemsHelper
+
   before_action :logged_in_user, only: [:edit, :update, :index, :destroy]
   before_action :correct_user_or_admin,   only: [:show, :edit, :update]
   before_action :admin_user,     only: [:destroy, :index]
@@ -9,8 +11,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @expired_maintenance_items = MaintenanceItem.where("due_for_checkup = 't'")
-                                     .joins(:car => :user).where("users.id = ?", @user.id)
+    @expired_maintenance_items = expired_maintenance_items(@user.id)
   end
 
   def new
