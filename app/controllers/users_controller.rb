@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @expired_maintenance_items = expired_maintenance_items(@user.id)
   end
 
   def new

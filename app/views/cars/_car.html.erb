@@ -13,4 +13,9 @@
   </div>
   <%= link_to("Update Odometer", {controller: 'cars', action: 'get_update_odometer_form', id: car.id}, remote: true, class: 'update-odometer-link') %>
   <div class="form-container"></div>
+
+  <% if car.get_expired_maintenance_items().count > 0 %>
+      <div class="expired-maintenance-items-title">Expired maintenance items</div>
+      <%= render(partial: 'maintenance_items/maintenance_item', collection: car.get_expired_maintenance_items(), locals: {allowEdit: false} ) %>
+  <% end %>
 </div>

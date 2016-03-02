@@ -13,7 +13,7 @@
 }
 
 .car .name {
-  font-size: 1.25em;
+  font-size: 1.5em;
 }
 
 .odometer {
@@ -39,4 +39,9 @@
 
 .car.update-odometer .update-odometer-link {
   display: none;
+}
+
+.car .expired-maintenance-items-title {
+  font-size: 1.1em;
+  margin-top: 10px;
 }

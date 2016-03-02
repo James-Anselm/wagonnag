@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<div class="cars <%= 'full-width' if !@expired_maintenance_items.any? %>">
+<div class="cars">
   <h3 class="clearfix">Cars (<%= @user.cars.count %>) <%= link_to raw("<span class='glyphicon glyphicon-plus'></span>"), new_car_path %></h3>
   <% if @user.cars.any? %>
     <div class="list">
@@ -7,11 +7,3 @@
     </div>
   <% end %>
 </div>
-<% if @expired_maintenance_items.any? %>
-  <div class="maintenance-items expired">
-    <h3>Items due for checkup (<span class="count"><%= @expired_maintenance_items.count %></span>)</h3>
-    <div class="list">
-      <%= render @expired_maintenance_items %>
-    </div>
-  </div>
-<% end %>
