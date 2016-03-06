@@ -61,7 +61,6 @@ class CarsController < ApplicationController
     if(@car && @car.user_id == current_user.id && (Integer(params[:odometer]) rescue false))
       if(@car.update_attributes(:odometer => params[:odometer]))
         update_maintenance_items()
-        @expired_maintenance_items = get_expired_maintenance_items(@car.user_id)
       end
     end
     respond_to do |format|

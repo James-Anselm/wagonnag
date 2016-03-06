@@ -1,19 +1,20 @@
 <div class="car" id="car_id_<%=car.id%>">
-  <div class="clearfix">
+  <div class="header clearfix">
     <%= link_to car, class: "name" do %>
         <%= car.year %> <%= car.make %> <%= car.model %>
     <% end %>
     <% if current_user.admin? || current_user?(@user) %>
-        <%= link_to raw("<span class='glyphicon glyphicon-pencil'></span>"), edit_car_path(car) %>
-        <%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), car, method: :delete, data: { confirm: "You sure?" }  %>
+        <%= link_to raw("<span class='glyphicon glyphicon-pencil edit-icon icon'></span>"), edit_car_path(car) %>
+        <%= link_to raw("<span class='glyphicon glyphicon-trash delete-icon icon'></span>"), car, method: :delete, data: { confirm: "You sure?" }  %>
     <% end %>
   </div>
   <div class="odometer">
-    <span class="odometer-title">Current odometer: </span><span class="odometer-value"><%= car.odometer %></span>
+    <span class="odometer-title">Current odometer: </span>
+    <span class="odometer-value"><%= car.odometer %></span>
+    <%= link_to(raw("<span class='glyphicon glyphicon-pencil edit-icon icon'></span>"), {controller: 'cars', action: 'get_update_odometer_form', id: car.id}, remote: true, class: 'update-odometer-link') %>
+    <span class="glyphicon glyphicon-ban-circle cancel-changes-icon icon"></span>
+    <span class="form-container"></span>
   </div>
-  <%= link_to("Update Odometer", {controller: 'cars', action: 'get_update_odometer_form', id: car.id}, remote: true, class: 'update-odometer-link') %>
-  <div class="form-container"></div>
-
   <% if car.get_expired_maintenance_items().count > 0 %>
       <div class="expired-maintenance-items-title">Expired maintenance items</div>
       <%= render(partial: 'maintenance_items/maintenance_item', collection: car.get_expired_maintenance_items(), locals: {allowEdit: false} ) %>

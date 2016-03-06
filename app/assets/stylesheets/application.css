@@ -24,9 +24,9 @@
     clear: both;
 }
 
-.glyphicon.glyphicon-pencil,
-.glyphicon.glyphicon-trash,
-.glyphicon.glyphicon-plus{
+.icon {
     float: right;
-    margin-right: 5px;
+    margin-right: 10px;
+    color: #337ab7; /* make it the color of anchor tag stuff so that users think they can click it. */
+    cursor: pointer;
 }

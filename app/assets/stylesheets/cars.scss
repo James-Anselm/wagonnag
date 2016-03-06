@@ -14,6 +14,11 @@
 
 .car .name {
   font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.car .header {
+  margin-bottom: 10px;
 }
 
 .odometer {
@@ -29,17 +34,37 @@
   color: green;
 }
 
-.car.update-odometer .odometer {
+.car.update-odometer .odometer-value {
   display: none;
 }
 
-.car.update-odometer .odometer-value.updated::after {
-  content: "";
+.car .odometer .cancel-changes-icon {
+  display: none;
+}
+
+.car .odometer .form-container {
+  display: none;
 }
 
 .car.update-odometer .update-odometer-link {
   display: none;
 }
+
+.car.update-odometer .odometer .cancel-changes-icon {
+  display: inherit;
+}
+
+.car.update-odometer .form-container,
+.car.update-odometer .form-container form,
+.car.update-odometer .form-container input {
+  display: inline-block;
+}
+
+.car.update-odometer .form-container input {
+  width: 100px;
+  margin-bottom: 0;
+}
+
 
 .car .expired-maintenance-items-title {
   font-size: 1.1em;
