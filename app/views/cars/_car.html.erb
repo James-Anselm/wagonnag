@@ -1,7 +1,7 @@
 <div class="car" id="car_id_<%=car.id%>">
   <div class="header clearfix">
     <%= link_to car, class: "name" do %>
-        <%= car.year %> <%= car.make %> <%= car.model %>
+        <%= car.get_display_name() %>
     <% end %>
     <% if current_user.admin? || current_user?(@user) %>
         <%= link_to raw("<span class='glyphicon glyphicon-pencil edit-icon icon'></span>"), edit_car_path(car) %>

@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require toastr
  */
+
 .back-link {
     display: block;
     margin-top: 10px;

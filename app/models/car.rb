@@ -8,4 +8,12 @@ class Car < ActiveRecord::Base
   def get_expired_maintenance_items
     return self.maintenance_items.where("due_for_checkup = 't'")
   end
+
+  def get_display_name
+    if(self.nickname != nil)
+      return self.nickname
+    else
+      return self.year + ' ' + self.make + ' ' + self.model
+    end
+  end
 end
