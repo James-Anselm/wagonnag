@@ -2,16 +2,16 @@
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :make, class: 'required' %>
-    <%= f.text_field :make, class: 'form-control' %>
+    <%= f.text_field :make, class: 'form-control', maxLength: 32 %>
 
     <%= f.label :model, class: 'required' %>
-    <%= f.text_field :model, class: 'form-control' %>
+    <%= f.text_field :model, class: 'form-control', maxLength: 32 %>
 
-    <%= f.label :year, class: 'required' %>
-    <%= f.number_field :year, class: 'form-control' %>
+    <%= f.label :year %>
+    <%= f.number_field :year, class: 'form-control'%>
 
     <%= f.label :nickname %>
-    <%= f.text_field :nickname, class: 'form-control' %>
+    <%= f.text_field :nickname, class: 'form-control', maxLength: 32 %>
 
     <%= f.label :description %>
     <%= f.text_field :description, class: 'form-control' %>

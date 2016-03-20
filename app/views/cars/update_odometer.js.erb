@@ -1,6 +1,12 @@
-$("#car_id_<%=@car.id%>").replaceWith("<%=escape_javascript(render @car)%>");
-toastr.success("Odometer for <%=@car.get_display_name()%> has been updated to <%=@car.odometer %>.");
+<%if(@car.errors.count <= 0)%>
+  $("#car_id_<%=@car.id%>").replaceWith("<%=escape_javascript(render @car)%>");
+  toastr.success("Odometer for <%=@car.get_display_name()%> has been updated to <%=@car.odometer %>.");
 
-<%if(@car.get_expired_maintenance_items().count > 0)%>
-toastr.warning("<%=@car.get_display_name()%> has <%=@car.get_expired_maintenance_items.count()%> maintenance items that need servicing.");
+  <%if(@car.get_expired_maintenance_items().count > 0)%>
+    toastr.warning("<%=@car.get_display_name()%> has <%=@car.get_expired_maintenance_items.count()%> maintenance items that need servicing.");
+  <%end%>
+<%else%>
+  <%@car.errors.full_messages.each do |msg| %>
+    toastr.error("<%=msg%>");
+  <%end%>
 <%end%>

@@ -1,6 +1,25 @@
 class MaintenanceItem < ActiveRecord::Base
   belongs_to :car
-  validates :name , presence: true
+  validates :name,
+            presence: true,
+            length: {
+                maximum: 32
+            }
+  validates :interval,
+            numericality: {
+                only_integer: true,
+                greater_than_or_equal_to: 0,
+                allow_blank: true,
+                allow_nil: true
+            }
+  validates :last_maintained_odometer,
+            numericality:  {
+                only_integer: true,
+                greater_than_or_equal_to: 0,
+                allow_blank: true,
+                allow_nil: true
+            }
+
   before_save :check_due_for_checkup
 
   def update_due_for_checkup(due_for_checkup)
