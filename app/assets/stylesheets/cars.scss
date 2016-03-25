@@ -3,9 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .car {
+  width: 100%;
   display: inline-block;
   vertical-align: top;
-  width: 100%;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid black;
@@ -51,7 +51,7 @@
 }
 
 .car.update-odometer .odometer .cancel-changes-icon {
-  display: inherit;
+  display: inline-block;
 }
 
 .car.update-odometer .form-container,
@@ -63,6 +63,7 @@
 .car.update-odometer .form-container input {
   width: 100px;
   margin-bottom: 0;
+  margin-right: 10px;
 }
 
 .car.update-odometer .form-container .save-icon {
@@ -72,4 +73,26 @@
 .car .expired-maintenance-items-title {
   font-size: 1.1em;
   margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.car .maintenance-item.due-for-checkup .name {
+  color: red;
+  font-size: 1em;
+}
+
+@media(min-width: 641px) {
+  .car {
+    width: auto;
+    margin-right: 10px;
+  }
+
+  .show-car .car {
+    display: inline-block;
+  }
+
+  .car .maintenance-item {
+    width: auto;
+    margin-right: 10px;
+  }
 }

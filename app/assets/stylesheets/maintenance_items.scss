@@ -24,3 +24,10 @@
 .maintenance-item.due-for-checkup .due-for-checkup-message {
   color: red;
 }
+
+@media(min-width: 641px) {
+  .maintenance-item {
+    width: auto;
+    margin-right: 10px;
+  }
+}

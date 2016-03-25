@@ -1,6 +1,9 @@
 <% provide(:title, @user.name) %>
 <div class="cars">
-  <h3 class="clearfix">Cars (<%= @user.cars.count %>) <%= link_to raw("<span class='glyphicon glyphicon-plus add-icon icon'></span>"), new_car_path %></h3>
+  <h3 class="clearfix">
+    Cars (<%= @user.cars.count %>)
+    <%= link_to raw("<span class='glyphicon glyphicon-plus add-icon icon'></span>"), new_car_path %>
+  </h3>
   <% if @user.cars.any? %>
     <div class="list">
       <%= render @user.cars %>

@@ -3,20 +3,15 @@
     <%= link_to car, class: "name" do %>
         <%= car.get_display_name() %>
     <% end %>
-    <% if current_user.admin? || current_user?(@user) %>
-        <%= link_to raw("<span class='glyphicon glyphicon-pencil edit-icon icon'></span>"), edit_car_path(car) %>
-        <%= link_to raw("<span class='glyphicon glyphicon-trash delete-icon icon'></span>"), car, method: :delete, data: { confirm: "You sure?" }  %>
-    <% end %>
   </div>
-  <div class="odometer">
+  <div class="odometer clearfix">
     <span class="odometer-title">Current odometer: </span>
     <span class="odometer-value"><%= car.odometer %></span>
-    <%= link_to(raw("<span class='glyphicon glyphicon-pencil edit-icon icon'></span>"), {controller: 'cars', action: 'get_update_odometer_form', id: car.id}, remote: true, class: 'update-odometer-link') %>
-    <span class="glyphicon glyphicon-ban-circle cancel-changes-icon icon"></span>
     <span class="form-container"></span>
+    <%= link_to(raw("<span class='glyphicon glyphicon-pencil edit-icon icon'></span>"), {controller: 'cars', action: 'get_update_odometer_form', id: car.id}, remote: true, class: 'update-odometer-link') %>
   </div>
   <% if car.get_expired_maintenance_items().count > 0 %>
-      <div class="expired-maintenance-items-title">Expired maintenance items</div>
-      <%= render(partial: 'maintenance_items/maintenance_item', collection: car.get_expired_maintenance_items(), locals: {allowEdit: false} ) %>
+      <div class="expired-maintenance-items-title">Maintenance items to check up on</div>
+      <%= render(partial: 'maintenance_items/simple_maintenance_item', collection: car.get_expired_maintenance_items(), as: :maintenance_item) %>
   <% end %>
 </div>
