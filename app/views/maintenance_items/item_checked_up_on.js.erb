@@ -1,0 +1,11 @@
+<%if(@maintenanceItem.errors.count <= 0)%>
+  toastr.success("<%=@maintenanceItem.name%> has/have been checked up on.");
+  $("#maintenance-item_id_<%=@maintenanceItem.id%>")
+    .removeClass("due-for-checkup")
+      .find(".last-maintained-odometer")
+        .text("Last serviced at <%=@maintenanceItem.last_maintained_odometer%>");
+<%else%>
+  <%@maintenanceItem.errors.full_messages.each do |msg| %>
+    toastr.error("<%=msg%>");
+  <%end%>
+<%end%>

@@ -39,6 +39,16 @@ class MaintenanceItemsController < ApplicationController
     redirect_to car_path(:id => params[:car_id])
   end
 
+  def item_checked_up_on
+    @maintenanceItem = MaintenanceItem.find(params[:id])
+    if(@maintenanceItem && @maintenanceItem.car.user_id == current_user.id)
+      @maintenanceItem.update_attributes(:last_maintained_odometer => @maintenanceItem.car.odometer, :due_for_checkup => false)
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
   private
     def maintenance_items_params
       params.require(:maintenance_item).permit(:name, :description, :interval, :last_maintained_odometer, :due_for_checkup)

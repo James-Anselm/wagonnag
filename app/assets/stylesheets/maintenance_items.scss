@@ -25,6 +25,16 @@
   color: red;
 }
 
+.maintenance-item .due-for-checkup-message,
+.maintenance-item .item-checked-up-on {
+  display: none;
+}
+
+.maintenance-item.due-for-checkup .due-for-checkup-message,
+.maintenance-item.due-for-checkup .item-checked-up-on {
+  display: block;
+}
+
 @media(min-width: 641px) {
   .maintenance-item {
     width: auto;

@@ -1,4 +1,4 @@
-<div class="maintenance-item <%= maintenance_item.due_for_checkup ? "due-for-checkup" : "" %>">
+<div class="maintenance-item <%= maintenance_item.due_for_checkup ? "due-for-checkup" : "" %>" id="maintenance-item_id_<%=maintenance_item.id%>">
   <div class="clearfix">
     <span class="name"><%= maintenance_item.name %></span>
     <% if (current_user.admin? || current_user?(maintenance_item.car.user)) %>
@@ -14,5 +14,6 @@
   <% end %>
   <% if maintenance_item.due_for_checkup %>
     <div class="due-for-checkup-message">Check up!</div>
+    <%= link_to("Mark as checked up on", {controller: 'maintenance_items', action: 'item_checked_up_on', id: maintenance_item.id}, remote: true, method: :post, class: "item-checked-up-on") %>
   <% end %>
 </div>

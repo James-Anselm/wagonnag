@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   post 'update_odometer' => 'cars#update_odometer'
   get 'get_update_odometer_form' => 'cars#get_update_odometer_form'
+  post 'item_checked_up_on' => 'maintenance_items#item_checked_up_on'
 
   resources :maintenance_items, only: [:update]
 end
