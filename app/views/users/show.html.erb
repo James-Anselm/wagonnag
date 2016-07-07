@@ -1,4 +1,9 @@
 <% provide(:title, @user.name) %>
+<div class="explanation">
+  See all your cars and what maintenance work they are due for.
+  You can also update the car's odometer.
+  If you want to add a car, click the + button.
+</div>
 <div class="cars">
   <h3 class="clearfix">
     Cars (<%= @user.cars.count %>)

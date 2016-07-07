@@ -1,6 +1,10 @@
 <%= provide(:title, @car.nickname) %>
 <%= provide(:class, "show-car") %>
 <%= link_to "Back to all cars", user_path(@car.user), class: "back-link" %>
+<div class="explanation">
+  See information about your car here, including the maintenance items for the car.
+  If you want to add a maintenance item, click the + button.
+</div>
 <h3>Car</h3>
 <div class="car">
   <div class="header clearfix">
